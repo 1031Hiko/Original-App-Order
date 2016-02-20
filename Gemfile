@@ -51,4 +51,8 @@ end
   gem 'devise'
   gem 'pry-rails'
   gem 'kaminari'
+  gem 'twitter-bootstrap-rails'
+  gem 'bootstrap-material-design', '0.1.4'
+  gem 'therubyracer'
+  gem 'paperclip'
 
