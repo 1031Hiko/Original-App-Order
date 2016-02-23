@@ -7,10 +7,19 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+<li>servise</li>
+  <li>account</li>
+<li class="entry_button" style="float: right">
+                  <%= link_to 'sign out', "/users/sign_out", method: :delete %>
+                </li>
+
+  </header>
+
 
 <%= yield %>
 <footer class='row text-center'>
-        <p>(C) Profy 2015</p>
+        <p>(C) Order 2015</p>
       </footer>
 </body>
 
