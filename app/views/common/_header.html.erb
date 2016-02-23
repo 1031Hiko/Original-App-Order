@@ -1,20 +1,20 @@
 
 <% if brand_signed_in? %>
     <li><%= link_to 'HOME', root_path %></li>
-    
+
     <li><%= link_to "MY PAGE", brand_path(current_brand) %></li>
-    
+
     <li><%= link_to "profile edit", edit_brand_path(current_brand) %></li> 
-    
+
     <li><%= link_to "Log out", destroy_brand_session_path, method: :delete %></li>
 
 <% else %>
    <li><%= link_to 'HOME', root_path %></li>
-   
+
    <li><%= link_to "MY PAGE", retailer_path(current_retailer) %></li>
 
     <li><%= link_to "profile edit", edit_retailer_path(current_retailer) %></li>
-   
+
    <li><%= link_to "Log out", destroy_retailer_session_path, method: :delete %></li>
-   
+
 <% end %>
