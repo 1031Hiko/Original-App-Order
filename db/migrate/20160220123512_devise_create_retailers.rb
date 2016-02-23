@@ -19,6 +19,17 @@ class DeviseCreateRetailers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+       t.text :company_name
+       t.text :company_address
+       t.string :country
+       t.string :user_name
+       t.integer :phone_number
+       t.string :item_type
+       t.string   :confirmation_token
+       t.datetime :confirmed_at
+       t.datetime :confirmation_sent_at
+       t.string   :unconfirmed_email
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at

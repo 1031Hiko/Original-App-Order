@@ -11,6 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160223030602) do
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.text     "company_name",           limit: 65535
+    t.text     "company_address",        limit: 65535
+    t.string   "country",                limit: 255
+    t.string   "user_name",              limit: 255
+    t.integer  "phone_number",           limit: 4
+    t.string   "item_type",              limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "brands", ["email"], name: "index_brands_on_email", unique: true, using: :btree
+  add_index "brands", ["reset_password_token"], name: "index_brands_on_reset_password_token", unique: true, using: :btree
+
+  create_table "retailers", force: :cascade do |t|
+    t.string   "email",                  limit: 255,   default: "", null: false
+    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "reset_password_token",   limit: 255
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip",     limit: 255
+    t.string   "last_sign_in_ip",        limit: 255
+    t.text     "company_name",           limit: 65535
+    t.text     "company_address",        limit: 65535
+    t.string   "country",                limit: 255
+    t.string   "user_name",              limit: 255
+    t.integer  "phone_number",           limit: 4
+    t.string   "item_type",              limit: 255
+    t.string   "confirmation_token",     limit: 255
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email",      limit: 255
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
+  add_index "retailers", ["email"], name: "index_retailers_on_email", unique: true, using: :btree
+  add_index "retailers", ["reset_password_token"], name: "index_retailers_on_reset_password_token", unique: true, using: :btree
 
 end

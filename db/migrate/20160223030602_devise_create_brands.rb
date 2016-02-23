@@ -1,6 +1,6 @@
-class DeviseCreateBuyers < ActiveRecord::Migration
+class DeviseCreateBrands < ActiveRecord::Migration
   def change
-    create_table(:buyers) do |t|
+    create_table(:brands) do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -19,6 +19,17 @@ class DeviseCreateBuyers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
+     t.text :company_name
+     t.text :company_address
+     t.string :country
+     t.string :user_name
+     t.integer :phone_number
+     t.string :item_type
+     t.string   :confirmation_token
+     t.datetime :confirmed_at
+     t.datetime :confirmation_sent_at
+     t.string   :unconfirmed_email
+
       ## Confirmable
       # t.string   :confirmation_token
       # t.datetime :confirmed_at
@@ -34,9 +45,9 @@ class DeviseCreateBuyers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :buyers, :email,                unique: true
-    add_index :buyers, :reset_password_token, unique: true
-    # add_index :buyers, :confirmation_token,   unique: true
-    # add_index :buyers, :unlock_token,         unique: true
+    add_index :brands, :email,                unique: true
+    add_index :brands, :reset_password_token, unique: true
+    # add_index :brands, :confirmation_token,   unique: true
+    # add_index :brands, :unlock_token,         unique: true
   end
 end

@@ -1,4 +1,4 @@
-class Buyers::UnlocksController < Devise::UnlocksController
+class Brands::UnlocksController < Devise::UnlocksController
   # GET /resource/unlock/new
   # def new
   #   super
