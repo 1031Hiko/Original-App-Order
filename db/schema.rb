@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223030602) do
+ActiveRecord::Schema.define(version: 20160223111957) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20160223030602) do
     t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "brands", ["email"], name: "index_brands_on_email", unique: true, using: :btree
@@ -64,6 +68,10 @@ ActiveRecord::Schema.define(version: 20160223030602) do
     t.string   "unconfirmed_email",      limit: 255
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
+    t.string   "avatar_file_name",       limit: 255
+    t.string   "avatar_content_type",    limit: 255
+    t.integer  "avatar_file_size",       limit: 4
+    t.datetime "avatar_updated_at"
   end
 
   add_index "retailers", ["email"], name: "index_retailers_on_email", unique: true, using: :btree

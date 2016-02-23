@@ -13,7 +13,7 @@ class BrandsController < ApplicationController
 
   private
   def update_params
-    params.require(:brand).permit(:company_name, :company_address, :country, :user_name, :phone_number, :item_type)
+    params.require(:brand).permit(:company_name, :company_address, :country, :user_name, :phone_number, :item_type, :avatar)
   end
 
 end

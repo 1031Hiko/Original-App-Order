@@ -1,4 +1,10 @@
+  <div class="image" style="background-image: url(<%= @brand.avatar.url(:medium) %>);"></div>
+  
+
+
   <h2><%= @brand.user_name %><span><%= @brand.company_name %></span><span><%= @brand.company_address %></span><span><%= @brand.country %></span><span><%= @brand.user_name %></span><span><%= @brand.phone_number %></span><span><%= @brand.item_type %></span></h2>
+
+
 
   <% if current_brand.id == @brand.id %>
       <div class="profile_edit">

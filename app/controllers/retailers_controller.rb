@@ -12,6 +12,6 @@ class RetailersController < ApplicationController
 
   private
   def update_params
-    params.require(:retailer).permit(:company_name, :company_address, :country, :user_name, :phone_number, :item_type)
+    params.require(:retailer).permit(:company_name, :company_address, :country, :user_name, :phone_number, :item_type, :avatar)
   end
 end
