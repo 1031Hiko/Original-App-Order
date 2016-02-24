@@ -1,0 +1,13 @@
+<div class="contents row">
+  <%= form_tag('/products', method: :post) do %>
+    <h3>
+      投稿する
+    </h3>
+    <input placeholder="style_number" type="text" name="style_number">
+    <input placeholder="price" type="text" name="price">
+    <input placeholder="color" type="text" name="color">
+    <input placeholder="size" type="text" name="size">
+    <input placeholder="fabric" type="text" name="fabric">
+    <input type="submit" value="SENT">
+  <% end %>
+</div>

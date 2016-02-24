@@ -15,6 +15,8 @@ resources :contents, only: [:index]
 
 resources :retailers, only: [:show, :edit, :update]
 resources :brands, only: [:show, :edit, :update]
+resources :products, only: [:index, :new, :create, :edit]
 
 root to: "contents#index"
+
 end
