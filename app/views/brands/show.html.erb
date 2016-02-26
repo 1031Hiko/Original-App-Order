@@ -10,4 +10,12 @@
       <div class="profile_edit">
         <%= link_to "profile edit", edit_brand_path(current_brand), {:class => "btn btn-primary withripple" }%>
       </div>
-    <% end %>
+
+      <div class="post_products">
+        <%= link_to "post product", new_brand_product_path(current_brand), {:class => "btn btn-primary withripple" }%>
+      </div>
+
+       <div class="product">
+        <%= link_to "product", brand_products_path(current_brand), {:class => "btn btn-primary withripple" }%>
+      </div>
+  <% end %>

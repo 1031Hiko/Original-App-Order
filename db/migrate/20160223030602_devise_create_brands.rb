@@ -23,7 +23,7 @@ class DeviseCreateBrands < ActiveRecord::Migration
      t.text :company_address
      t.string :country
      t.string :user_name
-     t.integer :phone_number
+     t.string :phone_number
      t.string :item_type
      t.string   :confirmation_token
      t.datetime :confirmed_at

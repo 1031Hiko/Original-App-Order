@@ -4,7 +4,9 @@
 
     <li><%= link_to "MY PAGE", brand_path(current_brand) %></li>
 
-    <li><%= link_to "profile edit", edit_brand_path(current_brand) %></li> 
+    <li><%= link_to "profile edit", edit_brand_path(current_brand) %></li>
+
+    <li><%= link_to "Product", brand_products_path(current_brand) %></li>
 
     <li><%= link_to "Log out", destroy_brand_session_path, method: :delete %></li>
 

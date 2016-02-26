@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223150136) do
+ActiveRecord::Schema.define(version: 20160225070730) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160223150136) do
     t.text     "company_address",        limit: 65535
     t.string   "country",                limit: 255
     t.string   "user_name",              limit: 255
-    t.integer  "phone_number",           limit: 4
+    t.string   "phone_number",           limit: 255
     t.string   "item_type",              limit: 255
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"
@@ -46,13 +46,18 @@ ActiveRecord::Schema.define(version: 20160223150136) do
   add_index "brands", ["reset_password_token"], name: "index_brands_on_reset_password_token", unique: true, using: :btree
 
   create_table "products", force: :cascade do |t|
-    t.string   "style_number", limit: 255
-    t.integer  "price",        limit: 4
-    t.string   "color",        limit: 255
-    t.string   "size",         limit: 255
-    t.string   "fabric",       limit: 255
+    t.string   "style_number",       limit: 255
+    t.integer  "price",              limit: 4
+    t.string   "color",              limit: 255
+    t.string   "size",               limit: 255
+    t.string   "fabric",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "brand_id",           limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
   end
 
   create_table "retailers", force: :cascade do |t|
@@ -70,7 +75,7 @@ ActiveRecord::Schema.define(version: 20160223150136) do
     t.text     "company_address",        limit: 65535
     t.string   "country",                limit: 255
     t.string   "user_name",              limit: 255
-    t.integer  "phone_number",           limit: 4
+    t.string   "phone_number",           limit: 255
     t.string   "item_type",              limit: 255
     t.string   "confirmation_token",     limit: 255
     t.datetime "confirmed_at"

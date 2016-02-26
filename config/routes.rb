@@ -14,8 +14,13 @@ Rails.application.routes.draw do
 resources :contents, only: [:index]
 
 resources :retailers, only: [:show, :edit, :update]
-resources :brands, only: [:show, :edit, :update]
-resources :products, only: [:index, :new, :create, :edit]
+
+resources :brands, only: [:show, :edit, :update] do
+  resources :products, only: [:index, :new, :create, :edit, :update]
+# get 'brands/:id' => 'brands#product_detail'
+end
+
+
 
 root to: "contents#index"
 
