@@ -1,0 +1,36 @@
+<body>
+  <div class="row form">
+    <div class="col-lg-12">
+      <h2>Post Products</h2>
+
+        <%= form_for (@brand) do |f| %>
+
+          <%= f.fields_for :products do |products_form| %>
+            <%= products_form.text_field :style_number, placeholder: "style number" %>
+            <%= products_form.text_field :price, placeholder: "price" %>
+            <%= products_form.collection_select(:size_id, @sizes, :id, :name, {include_hidden: false}, {multiple: true}) %>
+            <%= products_form.collection_select(:color_id, @colors, :id, :name, {include_hidden: false}, {multiple: true}) %>
+            <%= products_form.text_field :fabric, placeholder: "fabric" %>
+            <%= products_form.file_field :image %>
+
+              <% if @brand.persisted? %>
+                <%= products_form.check_box :_destroy %>
+                <%= products_form.label :_destroy, "remove" %><br />
+              <% end %>
+
+          
+
+                <div>
+                  <%= f.fields_for :products do |builder| %>
+                    <%= render partial: "product_fields", locals: {f: builder} %>
+                  <% end %>
+                  <%= link_to_add_field "add product", f, :products %>
+                </div>
+                <br>
+
+            <%= f.submit %>
+           <% end %>
+        <% end %>
+    </div>
+  </div>
+</body>

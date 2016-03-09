@@ -36,9 +36,9 @@ class ContractsController < ApplicationController
   end
 
 
-private
-  def order_params
-     params.require(:contract).permit(sold_products_attributes: [:product_id, :color_id, :size_id, :contract_id, :quantity, :price, :_destroy]).merge(retailer_id:current_retailer.id, brand_id:params[:brand_id])
-  end
+  private
+    def order_params
+       params.require(:contract).permit(sold_products_attributes: [:product_id, :color_id, :size_id, :contract_id, :quantity, :price, :_destroy]).merge(retailer_id:current_retailer.id, brand_id:params[:brand_id])
+    end
 
 end

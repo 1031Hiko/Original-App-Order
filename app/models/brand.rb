@@ -2,6 +2,8 @@ class Brand < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
 has_many :products
+accepts_nested_attributes_for :products, allow_destroy: true
+
 has_many :contracts
 
   devise :database_authenticatable, :registerable,
