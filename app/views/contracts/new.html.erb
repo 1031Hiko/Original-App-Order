@@ -1,0 +1,58 @@
+
+  <div class="row form">
+    <div class="col-lg-12">
+      <h2>product information</h2>
+
+      <%= form_for ( [@brand, @contract ] ) do |f| %>
+
+        <% @products.each do |product| %>
+
+           <%= f.fields_for :sold_products do |sold_products_form| %>
+
+               <%= sold_products_form.check_box :product_id, {}, "#{product.id}", nil %>
+                 <span> <%= product.style_number%> </span>
+
+               <%= sold_products_form.collection_select(:size_id, product.sizes, :id, :name) %>
+
+               <%= sold_products_form.collection_select(:color_id, product.colors, :id, :name) %>
+
+               <span><%= product.fabric%></span>
+
+               <%= number_to_currency(product.price)%>
+               <%= sold_products_form.hidden_field :price, :value => product.price %>
+
+               <%= sold_products_form.number_field(:quantity, min:"0") %>
+
+
+               <% if @contract.persisted? %>
+                  <%= sold_products_form.check_box :_destroy %>
+                  <%= sold_products_form.label :_destroy, "remove" %><br />
+               <% end %>
+
+           <% end %>
+            <div>
+
+            <%= f.fields_for :sold_products do |builder| %>
+            
+
+              <%= render partial: "sold_product_fields", locals: {product: product, f: builder} %>
+
+            <% end %>
+
+             <%= link_to_add_fields "add product", f, :sold_products, product %>
+
+            </div>
+
+
+               <br>
+
+
+        <% end %>
+
+        <%= f.submit "confirm", class: "btn btn-primary withripple" %>
+
+      <% end %>
+
+    </div>
+  </div>
+</body>

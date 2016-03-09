@@ -1,21 +1,63 @@
-  <div class="image" style="background-image: url(<%= @brand.avatar.url(:medium) %>);"></div>
-  
+<div class="container">
+  <div class="row">
+    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+       <br>
+    </div>
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @brand.company_name %></h3>
+          </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> <img src="<%= @brand.avatar.url(:medium) %>" class="img-circle img-responsive" alt=""> </div>
+
+               <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                          <td>User Name:</td>
+                          <td><%= @brand.user_name %></td>
+                        </tr>
+                        <tr>
+                          <td>Adress</td>
+                          <td><%= @brand.company_address %></td>
+                        </tr>
+                        <tr>
+                          <td>Country</td>
+                          <td><%= @brand.country %></td>
+                        </tr>
+
+                        <tr>
+                          <td>Phone Number</td>
+                          <td><%= @brand.phone_number %></td>
+                        </tr>
+                        <tr>
+                          <td>Item Type</td>
+                          <td><%= @brand.item_type %></td>
+                        </tr>
+                          <td>Email</td>
+                          <td><%= @brand.email %></td>
+                        </tr>
+                    </tbody>
+                  </table>
+                  <% if current_brand.id == @brand.id %>
+                    <div class="profile_edit">
+                      <%= link_to "profile edit", edit_brand_path(current_brand), {:class => "btn btn-warning btn-ghost" }%>
+                      <%= link_to "post product", new_brand_product_path(current_brand), {:class => "btn btn-warning btn-ghost"}%>
+                      <%= link_to "product", brand_products_path(current_brand), {:class => "btn btn-warning btn-ghost"}%>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  </div>
+</div>
 
 
-  <h2><%= @brand.user_name %><span><%= @brand.company_name %></span><span><%= @brand.company_address %></span><span><%= @brand.country %></span><span><%= @brand.user_name %></span><span><%= @brand.phone_number %></span><span><%= @brand.item_type %></span></h2>
 
 
 
-  <% if current_brand.id == @brand.id %>
-      <div class="profile_edit">
-        <%= link_to "profile edit", edit_brand_path(current_brand), {:class => "btn btn-primary withripple" }%>
-      </div>
 
-      <div class="post_products">
-        <%= link_to "post product", new_brand_product_path(current_brand), {:class => "btn btn-primary withripple" }%>
-      </div>
-
-       <div class="product">
-        <%= link_to "product", brand_products_path(current_brand), {:class => "btn btn-primary withripple" }%>
-      </div>
-  <% end %>

@@ -35,6 +35,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rails-erd'
 end
 
 group :development do
@@ -45,7 +46,6 @@ group :development do
   gem 'spring'
 end
 
-  gem 'pry-rails'
   gem 'compass-rails','~> 2.0'
   gem 'sprockets'
   gem 'devise'
@@ -55,4 +55,9 @@ end
   gem 'bootstrap-material-design', '0.1.4'
   gem 'therubyracer'
   gem 'paperclip'
+  gem 'jquery-turbolinks'
+  gem 'less-rails'
+  gem 'prawn'
+  gem 'prawn-table'
+  gem 'jquery-easing-rails'
 

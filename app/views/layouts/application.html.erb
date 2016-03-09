@@ -1,37 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Order</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+    <title>Order</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= csrf_meta_tags %>
 </head>
+
 <body>
-<header>
-  <% if brand_signed_in?%>
-    <div class="user_nav grid-6">
-          <%= link_to "sign out", destroy_brand_session_path, method: :delete %>
+
+    <% if brand_signed_in?%>
+      <% if request.path=="/" %>
+        <header class= "nav-index">
+      <% else %>
+        <header class= "nav">
+      <% end %>
           <%= render partial: 'common/header' %>
-    </div>
-  <% elsif retailer_signed_in? %>
-    <div class="user_nav grid-6">
-      <%= link_to "sign out", destroy_retailer_session_path, method: :delete %>
-      <%= render partial: 'common/header' %>
-    </div>
-  <% else %>
-    <div class="grid-6">
-      <%= link_to "Brand", brand_session_path, class: 'post' %>
-      <%= link_to "Retailer", retailer_session_path, class: 'post' %>
-      <%= link_to "Brand Register", new_brand_registration_path, class: 'post' %>
-      <%= link_to "Retailer Register", new_retailer_registration_path, class: 'post' %>
-    </div>
+
+    <% elsif retailer_signed_in? %>
+      <% if request.path=="/" %>
+        <header class= "nav-index">
+      <% else %>
+        <header class= "nav">
+      <% end %>
+        <%= render partial: 'common/header' %>
+
+    <% else %>
+    <% if request.path=="/" %>
+      <header class= "nav-index">
+    <% else %>
+      <header class= "nav">
+    <% end %>
+      <nav class="navbar navbar-default navbar-index">
+        <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+            <% if request.path=="/" %>
+              <nav class="navbar navbar-default navbar-index navbar-fixed-top header-content">
+            <% else %>
+              <nav class="navbar navbar-default navbar-fixed-top header-content">
+            <% end %>
+              <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+                  <div class="navbar-header page-scroll">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                   <a class="navbar-brand page-scroll" href="/">ORDER</a>
+                  </div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                          <li class="hidden">
+                            <a href="#page-top"></a>
+                          </li>
+                          <li>
+                            <a class="page-scroll" href="#services">Services</a>
+                          </li>
+                          <li>
+                            <a class="page-scroll" href="#portfolio">Busines Scene</a>
+                          </li>
+                          <li>
+                            <a class="page-scroll" href="#about">About</a>
+                          </li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+                              <ul class="dropdown-menu">
+                                <li><%= link_to "Brand", brand_session_path, class: 'post' %></li>
+                                <li><%= link_to "Retailer", retailer_session_path, class: 'post' %></li>
+                                <li><%= link_to "Brand Register", new_brand_registration_path, class: 'post' %></li>
+                                <li><%= link_to "Retailer Register", new_retailer_registration_path, class: 'post' %></li>
+                              </ul>
+                          </li>
+                        </ul>
+                    </div>
+              </div>
+          </nav>
+
+        </div>
+        </div><!-- /.container-fluid -->
+     </nav>
+
   <% end %>
+
 </header>
 
 <%= yield %>
 
-<footer class='row text-center'>
-        <p>(C) Order 2015</p>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; ORDER 2016</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li><a href="#"><i class="fa fa-twitter"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li><a href="#">Privacy Policy</a>
+                    </li>
+                    <li><a href="#">Terms of Use</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </footer>
 
 </body>

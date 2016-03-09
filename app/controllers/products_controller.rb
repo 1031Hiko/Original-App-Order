@@ -7,10 +7,20 @@ class ProductsController < ApplicationController
   def new
     @brand = Brand.find(current_brand.id)
     @product = Product.new
+    @sizes = Size.all
+    @colors = Color.all
   end
 
   def create
-    Product.create(product_params)
+    product = Product.create(product_params)
+    
+    params[:product][:color_id].each do |color|
+    product.products_colors.create(color_id: color)
+    end
+
+    params[:product][:size_id].each do |size|
+    product.products_sizes.create(size_id: size)
+    end
   end
 
   def edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225070730) do
+ActiveRecord::Schema.define(version: 20160305063958) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -45,6 +45,24 @@ ActiveRecord::Schema.define(version: 20160225070730) do
   add_index "brands", ["email"], name: "index_brands_on_email", unique: true, using: :btree
   add_index "brands", ["reset_password_token"], name: "index_brands_on_reset_password_token", unique: true, using: :btree
 
+  create_table "colors", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string   "order_date",               limit: 255
+    t.string   "confirmation_expired_day", limit: 255
+    t.string   "payment_term",             limit: 255
+    t.string   "freight_company",          limit: 255
+    t.string   "transport_type",           limit: 255
+    t.string   "ship_type",                limit: 255
+    t.string   "status",                   limit: 255
+    t.integer  "brand_id",                 limit: 4
+    t.integer  "retailer_id",              limit: 4
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "style_number",       limit: 255
     t.integer  "price",              limit: 4
@@ -58,6 +76,20 @@ ActiveRecord::Schema.define(version: 20160225070730) do
     t.string   "image_content_type", limit: 255
     t.integer  "image_file_size",    limit: 4
     t.datetime "image_updated_at"
+  end
+
+  create_table "products_colors", force: :cascade do |t|
+    t.string   "product_id", limit: 255
+    t.string   "color_id",   limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products_sizes", force: :cascade do |t|
+    t.string   "product_id", limit: 255
+    t.string   "size_id",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "retailers", force: :cascade do |t|
@@ -91,5 +123,20 @@ ActiveRecord::Schema.define(version: 20160225070730) do
 
   add_index "retailers", ["email"], name: "index_retailers_on_email", unique: true, using: :btree
   add_index "retailers", ["reset_password_token"], name: "index_retailers_on_reset_password_token", unique: true, using: :btree
+
+  create_table "sizes", force: :cascade do |t|
+    t.string "name", limit: 255
+  end
+
+  create_table "sold_products", force: :cascade do |t|
+    t.string   "product_id",  limit: 255
+    t.string   "color_id",    limit: 255
+    t.string   "size_id",     limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contract_id", limit: 4
+    t.integer  "price",       limit: 4
+    t.integer  "quantity",    limit: 4
+  end
 
 end

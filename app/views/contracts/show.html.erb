@@ -1,0 +1,63 @@
+<%- model_class = Order -%>
+<div class="page-header">
+  <h1>ORDER</h1>
+</div>
+
+<!-- 修正部分 開始 -->
+<dl class="dl-horizontal">
+  <dt><strong>Contract No:</strong></dt>
+  <dd><%= @contact %></dd>
+  <dt><strong>Order Date:</strong></dt>
+  <dd><%= @contract.created_at %></dd>
+</dl>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Style Name</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contract.sold_products.each_with_index do |sold_product, index| %>
+
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= sold_product.product.style_number %></td>
+        <td><%= sold_product.color.name %></td>
+        <td><%= sold_product.size.name %></td>
+        <td><%= sold_product.price %></td>
+        <td><%= sold_product.quantity %></td>
+        <td><%= number_to_currency sold_product.total_price %></td>
+
+      </tr>
+    <% end %>
+
+      <tr class="warning">
+            <td colspan="3" />
+            <td>Total</td>
+            <td><%= number_to_currency @contract.total_price %></td>
+          </tr>
+
+  </tbody>
+</table>
+
+
+
+
+<%= link_to "edit", edit_brand_contract_path(params[:brand_id], @contract), :class => 'btn btn-primary' %>
+
+<%= link_to 'delete', '/brands/#{params[:brand_id]}/contracts/#{(params[:brand_id]}', :class => 'btn btn-primary'  %>
+
+<%= link_to "PDF",
+  brand_contract_path(params[:brand_id], @contract, format: "pdf"),:class => 'btn btn-primary' %>
+
+
+
+

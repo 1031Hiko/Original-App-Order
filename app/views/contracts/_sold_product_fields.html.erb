@@ -1,0 +1,26 @@
+<fieldset>
+ 
+
+  <%= f.check_box :product_id, {}, "#{product.id}", nil %>
+
+  <span> <%= product.style_number%> </span>
+
+  <%= f.collection_select(:size_id, product.sizes, :id, :name) %>
+
+  <%= f.collection_select(:color_id, product.colors, :id, :name) %>
+
+  <span><%= product.fabric%></span>
+
+  <%= number_to_currency(product.price)%>
+  <%= f.hidden_field :price, :value => product.price %>
+
+  <%= f.number_field(:quantity, min:"0") %>
+
+  <%= f.hidden_field :_destroy %>
+
+  <%= link_to "remove", '#', class: "remove_fields" %>
+
+
+
+ </fieldset>
+
