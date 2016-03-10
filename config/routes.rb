@@ -14,8 +14,10 @@ Rails.application.routes.draw do
 
   resources :retailers, only: [:show, :edit, :update, :new, :create, :index]
 
+  resources :posted_products, only:[:new, :create]
+
   resources :brands, only: [:new, :create, :show, :edit, :update] do
-    resources :products, only: [:index, :edit, :update]
+    resources :products, only: [:index, :edit, :update, :new, :create]
     resources :contracts, only: [:new, :create, :show, :destroy, :edit]
   end
 

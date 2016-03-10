@@ -9,7 +9,6 @@ class BrandsController < ApplicationController
 
   def create
     Brand.create(create_params)
-    binding.pry
 
   end
 

@@ -3,9 +3,6 @@ class ContractsController < ApplicationController
   def new
     @brand = Brand.find(params[:brand_id])
     @products = @brand.products
-    # @products.each do |product|
-    #   @colors = product.colors
-    #   @sizes = product.sizes
     @contract = Contract.new
     @contract.sold_products.build
   end

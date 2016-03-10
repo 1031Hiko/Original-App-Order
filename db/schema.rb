@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305063958) do
+ActiveRecord::Schema.define(version: 20160310111932) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -63,11 +63,25 @@ ActiveRecord::Schema.define(version: 20160305063958) do
     t.datetime "updated_at",                           null: false
   end
 
+  create_table "posted_products", force: :cascade do |t|
+    t.string   "style_number",       limit: 255
+    t.integer  "price",              limit: 4
+    t.integer  "color_id",           limit: 4
+    t.integer  "size_id",            limit: 4
+    t.string   "fabric",             limit: 255
+    t.integer  "brand_id",           limit: 4
+    t.integer  "product_id",         limit: 4
+    t.string   "image_file_name",    limit: 255
+    t.string   "image_content_type", limit: 255
+    t.integer  "image_file_size",    limit: 4
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string   "style_number",       limit: 255
     t.integer  "price",              limit: 4
-    t.string   "color",              limit: 255
-    t.string   "size",               limit: 255
     t.string   "fabric",             limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
