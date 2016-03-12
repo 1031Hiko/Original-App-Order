@@ -6,7 +6,11 @@ class Product < ActiveRecord::Base
   belongs_to :brand
   has_many :contracts
   has_many :posted_products
-  accepts_nested_attributes_for :posted_products, allow_destroy: true
+  accepts_nested_attributes_for :posted_products, allow_destroy: true, reject_if: :reject_posts
+
+  def reject_posts(attributed)
+    attributed['style_number'].blank?
+  end
 
   has_many :products_colors
   has_many :products_sizes

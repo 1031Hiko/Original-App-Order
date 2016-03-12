@@ -1,7 +1,7 @@
 class Brand < ActiveRecord::Base
 has_many :products
-accepts_nested_attributes_for :products, allow_destroy: true
-
+has_many :posted_products
+has_many :posted_products, through: :products
 has_many :contracts
 
   devise :database_authenticatable, :registerable,

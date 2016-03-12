@@ -1,17 +1,11 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
-       <br>
-    </div>
-      <h2>product information</h2>
-      <%= form_for [@brand, @product] do |f| %>
-        <%= f.text_field :style_number, placeholder: "style number" %>
-        <%= f.text_field :price, placeholder: "price" %>
-        <%= f.text_field :size, placeholder: "size" %>
-        <%= f.text_field :color, placeholder: "color" %>
-        <%= f.text_field :fabric, placeholder: "fabric" %>
-        <%= f.file_field :image %>
-        <%= f.submit "update", class: "btn btn-primary withripple" %>
-    <% end %>
-  </div>
-</div>
+<%= render 'form', path: new_brand_product_path, method: :patch %>
+
+
+
+
+
+
+
+
+
+

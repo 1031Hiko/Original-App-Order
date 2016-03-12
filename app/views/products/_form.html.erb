@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8  toppad  pull-right col-md-offset-5 ">
+    <br>
+    </div>
+    <br>
+      <%= form_for ( [@brand, @product ] ) do |f| %>
+        <div class="row">
+          <b>add your products</b>
+            <%= f.fields_for :posted_products do |builder| %>
+              <%= render partial: "posted_product_fields", locals: {f: builder} %>
+            <% end %>
+            <br>
+          <div class="text-right">
+            <%= link_to_add_field "add product", f, :posted_products %>
+          </div>
+        <%= f.submit "confirm", class: "btn btn-primary withripple" %>
+        </div>
+      <% end %>
+   </div>
+</div>
