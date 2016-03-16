@@ -1,43 +1,44 @@
 class ProductsController < ApplicationController
 
-  # def index
-  #   @brand = Brand.find(params[:brand_id])
-  #   @products = @brand.products
-  #   @posted_products = @products.posted_products
-
-  # end
-
   def new
+    @form = PostedProduct.new
+    @form.products.build
     @brand = Brand.find(current_brand.id)
     @product = Product.new
     @sizes = Size.all
     @colors = Color.all
-    @product.posted_products.build
   end
 
   def create
-    binding.pry
-    @product = Product.create(posted_params)
+    @product = PostedProduct.create(product_params)
+    redirect_to :root
   end
-    # product = Product.create(product_params)
-
-    # params[:product][:color_id].each do |color|
-    # product.products_colors.create(color_id: color)
-    # end
-
-    # params[:product][:size_id].each do |size|
-    # product.products_sizes.create(size_id: size)
-    # end
+  # def edit
+  #   @form = PostedProduct.new
+  #   @form.products.build
+  #   @brand = Brand.find(current_brand.id)
+  #   # @product = Product.all
+  #   @products = @brand.products
+  #   @sizes = Size.all
+  #   @colors = Color.all
+  # end
   def edit
-    @brand = Brand.find(current_brand.id)
-    @product = Product.new
+    @brand = Brand.find(params[:brand_id])
+    @products = @brand.products
+    @forms = PostedProduct.find(@products[0][:posted_product_id])
+    @form = @forms.products
+    @forms.products.build
     @sizes = Size.all
     @colors = Color.all
-    @product.posted_products.build
+
   end
 
   def update
-    Product.update(update_params)
+    if @product.update_attributes(product_params)
+      redirect_to new_brand_product_path, notice: "#{@product.name} updated。"
+    else
+      render :edit
+    end
   end
 
   def show
@@ -45,16 +46,13 @@ class ProductsController < ApplicationController
     @products = @brand.products
   end
 
-
-
 private
   def update_params
     params.require(:product).permit(:style_number, :price, :size, :color, :fabric, :image)
   end
 
-  def posted_params
-     params.require(:product).permit(posted_products_attributes: [:brand_id, :style_number, :price, :color, :size, :fabric, :image, :product_id, :color_id, :size_id, :_destroy]).merge(brand_id:params[:brand_id])
+  def product_params
+     params.require(:posted_product).permit(products_attributes: [:brand_id, :style_number, :price, :color, :size, :fabric, :image, :product_id, :color_id, :size_id, :_destroy]).merge(brand_id:params[:brand_id])
   end
-
 
 end

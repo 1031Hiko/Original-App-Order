@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   registrations: 'retailers/registrations'
 }
 
-
+  resources :posted_products, only: [:create]
   resources :retailers, only: [:show, :edit, :update, :new, :create, :index]
 
   resources :brands, only: [:new, :create, :show, :edit, :update] do
@@ -24,3 +24,12 @@ Rails.application.routes.draw do
   root to: "contents#index"
 
 end
+
+
+resources :retailers, only: [:show, :edit, :update, :new, :create, :index]
+  resources :orders, only: [:show, :edit, :update, :new, :create, :index]
+    resources :order_details, only: [:show, :edit, :update, :new, :create, :index]
+
+resources :brands, only: [:new, :create, :show, :edit, :update]
+  resources :posts, only: [:new, :create, :show, :edit, :update]
+    resources :products, only: [:new, :create, :show, :edit, :update]

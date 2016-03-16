@@ -1,5 +1,25 @@
-<%= @products.each do |product| %>
+<div class="row form">
+  <div class="col-lg-12"> 
+    <h2>Product information</h2>
+      <% @brand.products.each_with_index do |product, index| %>
+        <div class="row form">
+           <div class="col-lg-12"> 
+            <%= index + 1 %>
+            <%= image_tag product.image %>
+            <%= product.style_number %>
+            <%= product.price %>
+            <%= product.fabric %>
+            <%= product.color.name %>
+            <%= product.size.name %>
+          </div>
+        </div>
+      <% end %>
 
-<%= product.posted_products_attributes %>
+    <% if brand_signed_in?%>
+      <%= link_to 'edit', edit_brand_product_path(current_brand, @products), {class: 'btn btn-primary withripple' }%>
+    <% else %>
+      <%= link_to 'order', new_brand_contract_path(product.brand_id), {class: 'btn btn-primary withripple' }%>
+    <% end %>
 
-<% end %>
+  </div>
+</div>
