@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160314032138) do
+ActiveRecord::Schema.define(version: 20160318082041) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "email",                  limit: 255,   default: "", null: false
@@ -63,6 +63,14 @@ ActiveRecord::Schema.define(version: 20160314032138) do
     t.datetime "updated_at",                           null: false
   end
 
+  create_table "order_fors", force: :cascade do |t|
+    t.string   "name",        limit: 255
+    t.integer  "retailer_id", limit: 4
+    t.integer  "brand_id",    limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posted_products", force: :cascade do |t|
     t.string   "style_number",       limit: 255
     t.integer  "price",              limit: 4
@@ -92,7 +100,7 @@ ActiveRecord::Schema.define(version: 20160314032138) do
     t.datetime "image_updated_at"
     t.integer  "color_id",           limit: 4
     t.integer  "size_id",            limit: 4
-    t.integer  "posted_product_id",  limit: 4
+    t.integer  "register_id",        limit: 4
   end
 
   create_table "products_colors", force: :cascade do |t|
@@ -105,6 +113,19 @@ ActiveRecord::Schema.define(version: 20160314032138) do
   create_table "products_sizes", force: :cascade do |t|
     t.string   "product_id", limit: 255
     t.string   "size_id",    limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "registers", force: :cascade do |t|
+    t.integer  "brand_id",                  limit: 4
+    t.integer  "season_id",                 limit: 4
+    t.string   "confirmation_expired_date", limit: 255
+    t.string   "delivery_term",             limit: 255
+    t.string   "payment_term",              limit: 255
+    t.string   "freight_company",           limit: 255
+    t.string   "transport_type",            limit: 255
+    t.string   "ship_type",                 limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -146,14 +167,15 @@ ActiveRecord::Schema.define(version: 20160314032138) do
   end
 
   create_table "sold_products", force: :cascade do |t|
-    t.string   "product_id",  limit: 255
-    t.string   "color_id",    limit: 255
-    t.string   "size_id",     limit: 255
+    t.string   "product_id",   limit: 255
+    t.string   "color_id",     limit: 255
+    t.string   "size_id",      limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "contract_id", limit: 4
-    t.integer  "price",       limit: 4
-    t.integer  "quantity",    limit: 4
+    t.integer  "contract_id",  limit: 4
+    t.integer  "price",        limit: 4
+    t.integer  "quantity",     limit: 4
+    t.integer  "order_for_id", limit: 4
   end
 
 end

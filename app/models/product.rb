@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+  belongs_to :register
   belongs_to :size
   belongs_to :color
   belongs_to :brand

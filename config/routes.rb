@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :brands, controllers: {
   sessions:      'brands/sessions',
   passwords:     'brands/passwords',
@@ -11,25 +11,34 @@ Rails.application.routes.draw do
   registrations: 'retailers/registrations'
 }
 
-  resources :posted_products, only: [:create]
-  resources :retailers, only: [:show, :edit, :update, :new, :create, :index]
+  resources :top, only: [:index]
 
-  resources :brands, only: [:new, :create, :show, :edit, :update] do
-    resources :products, only: [:edit, :update, :new, :create, :show]
-    resources :contracts, only: [:new, :create, :show, :destroy, :edit]
+  resources :contracts, only: [:new, :create, :show, :destroy, :edit]
+
+  resources :retailers, only: [:show, :edit, :update, :new, :create, :index], shallow: true do
+    resources :order_fors, only: [:show, :edit, :update, :new, :create, :index]
+  end
+
+  resources :brands, only: [:show, :edit, :update], shallow: true do
+    resources :registers, only: [:edit, :update, :new, :create, :index, :show]
+      resources :products, only: [:edit, :update, :new, :create, :show]
   end
 
   resources :contents, only: [:index]
-
   root to: "contents#index"
 
 end
 
 
-resources :retailers, only: [:show, :edit, :update, :new, :create, :index]
-  resources :orders, only: [:show, :edit, :update, :new, :create, :index]
-    resources :order_details, only: [:show, :edit, :update, :new, :create, :index]
 
-resources :brands, only: [:new, :create, :show, :edit, :update]
-  resources :posts, only: [:new, :create, :show, :edit, :update]
-    resources :products, only: [:new, :create, :show, :edit, :update]
+# resources :brands, only: [:new, :create, :show, :edit, :update] do
+#     resources :products, only: [:edit, :update, :new, :create, :show]
+#     resources :contracts, only: [:new, :create, :show, :destroy, :edit]
+#   end
+
+
+
+# resources :retailers, only: [:show, :edit, :update, :new, :create, :index] do
+#   resources :orders, only: [:show, :edit, :update, :new, :create, :index]
+#     resources :order_details, only: [:show, :edit, :update, :new, :create, :index]
+# end

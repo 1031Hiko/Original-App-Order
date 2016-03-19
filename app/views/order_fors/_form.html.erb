@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <br>
+    <%= form_for ( [@retailer, @order ] ) do |f| %>
+      <% @products.each do |product| %>
+        <div style="display:inline-flex">
+          <%= f.fields_for :sold_products do |builder| %>
+            <%= render partial: "sold_product_fields", locals: {product: product, f: builder} %>
+          <% end %>
+        </div>
+        <br>
+          <div class="text-right">
+            <%= link_to_add_fields "add", f, :sold_products, product %>
+          </div>
+      <% end %>
+      <div class="text-center">
+        <%= f.submit "order", class: "btn btn-primary withripple" %>
+      </div>
+    <% end %>
+  </div>
+</div>

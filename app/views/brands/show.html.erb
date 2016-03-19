@@ -44,8 +44,8 @@
                   <% if current_brand.id == @brand.id %>
                     <div class="profile_edit">
                       <%= link_to "profile edit", edit_brand_path(current_brand), {:class => "btn btn-warning btn-ghost" }%>
-                      <%= link_to "post product", new_brand_product_path(current_brand), {:class => "btn btn-warning btn-ghost"}%>
-                      <%= link_to "see products", brand_product_path(current_brand, @product), {:class => "btn btn-warning btn-ghost"}%>
+                      <%= link_to "post product", new_brand_register_path(current_brand), {:class => "btn btn-warning btn-ghost"}%>
+                      <%= link_to "see products", brand_registers_path(current_brand), {:class => "btn btn-warning btn-ghost"}%>
                     </div>
                   <% end %>
                 </div>

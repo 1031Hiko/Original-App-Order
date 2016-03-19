@@ -20,7 +20,7 @@
             <a href="#page-top"></a>
           </li>
           <li><%= link_to "MY PAGE", brand_path(current_brand) %></li>
-          <li><%= link_to "Product", brand_products_path(current_brand) %></li>
+          <li><%= link_to "Product", brand_registers_path(current_brand) %></li>
           <li><%= link_to "Log out", destroy_brand_session_path, method: :delete %></li>
         </ul>
       </div>
@@ -44,6 +44,8 @@
           <li class="hidden">
             <a href="#page-top"></a>
           </li>
+          <li><%= link_to "Order List", retailer_order_fors_path(current_retailer) %></li>
+          <li><%= link_to "Check Brands", top_index_path %></li>
           <li><%= link_to "MY PAGE", retailer_path(current_retailer) %></li>
           <li><%= link_to "Log out", destroy_retailer_session_path, method: :delete %></li>
         </ul>

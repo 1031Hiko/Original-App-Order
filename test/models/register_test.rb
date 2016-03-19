@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostedProductTest < ActiveSupport::TestCase
+class RegisterTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

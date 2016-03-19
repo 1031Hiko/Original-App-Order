@@ -1,8 +1,10 @@
 class Brand < ActiveRecord::Base
-has_many :products
-has_many :posted_products
-has_many :posted_products, through: :products
+has_many :registers
+has_many :products, through: :registers
+
 has_many :contracts
+
+has_many :order_fors
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable

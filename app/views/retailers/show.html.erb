@@ -45,6 +45,7 @@
                   <% if current_retailer.id == @retailer.id %>
                     <div class="profile_edit">
                       <%= link_to "profile edit", edit_retailer_path(current_retailer), {:class => "btn btn-warning btn-ghost" } %>
+                      <%= link_to "see brands", top_index_path, {:class => "btn btn-warning btn-ghost"}%>
                     </div>
                   <% end %>
                 </div>

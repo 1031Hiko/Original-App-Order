@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <br>
+    <fieldset>
+      <div style="display:inline-flex">
+        <tr>
+          <%= f.hidden_field :id %>
+          <td><%= f.check_box :product_id, {}, "#{product.id}", nil %></td>
+          <td><%= product.style_number%></td>
+          <td><%= product.size.name%></td>
+          <%= f.hidden_field :size_id, :value => product.size_id %>
+          <td><%= product.color.name %></td>
+          <%= f.hidden_field :color_id, :value => product.color_id %>
+          <td><%= product.fabric%></td>
+          <td><%= number_to_currency(product.price)%></td>
+          <%= f.hidden_field :price, :value => product.price %>
+          <td><%= f.number_field(:quantity, min:"0") %></td>
+          <td><%= f.hidden_field :_destroy %></td>
+          <td><%= link_to "remove", '#', class: "remove_fields" %></td>
+          <% unless @order.id.present? %>
+          <%= f.hidden_field :retailer, :value => @retailer.id %>
+          <% end %>
+        </tr>
+      </div>
+    </fieldset>
+  </div>
+</div>
+

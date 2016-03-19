@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <br>
+        <%= form_for ( [@brand, @register ] ) do |f| %>
+          <tr>
+            <td><%= f.text_field :confirmation_expired_date, placeholder: "confirmation_expired_date" %></tr>
+            <td><%= f.text_field :delivery_term, placeholder: "delivery_term" %></tr>
+            <td><%= f.text_field :payment_term, placeholder: "payment_term" %></tr>
+            <td><%= f.text_field :freight_company, placeholder: "freight_company" %></tr>
+            <td><%= f.text_field :transport_type, placeholder: "transport_type" %></tr>
+            <td><%= f.text_field :ship_type, placeholder: "ship_type" %></tr>
+          </tr>
+            <div style="display:inline-flex">
+              <%= f.fields_for :products do |builder| %>
+                <%= render partial: "product_fields", locals: {f: builder} %>
+              <% end %>
+            </div>
+            <br>
+            <div class="text-right">
+              <%= link_to_add_field "add product", f, :products %>
+            </div>
+            <div class="text-center">
+             <%= f.submit "register", class: "btn btn-primary withripple" %>
+            </div>
+        <% end %>
+  </div>
+</div>
+
+<!-- <tr>
+              <th>style_number</th>
+              <th>price</th>
+              <th>size</th>
+              <th>color</th>
+              <th>fabric</th>
+              <th>image</th>
+            </tr> -->

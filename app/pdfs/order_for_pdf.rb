@@ -1,11 +1,11 @@
-class ContractPDF < Prawn::Document
+class OrderForPDF < Prawn::Document
 
-    def initialize(contract)
+    def initialize(order_for)
       super()
 
      # 複数メソッドで利用できるようにするため
       # インスタンス変数に代入
-      @contract = contract
+      @order = order_for
 
       # 全体のフォントを設定
       # font "vendor/fonts/ipaexg.ttf"
@@ -34,9 +34,9 @@ class ContractPDF < Prawn::Document
       # bounding_boxで記載箇所を指定して、textメソッドでテキストを記載
       bounding_box([100, y_position], :width => 270, :height => 50) do
         font_size 10.5
-        text "Contract No:  #{@contract.id}"
+        text "Contract No:  #{@order.id}"
         move_down 3
-        text "Order Date:  #{@contract.created_at}"
+        text "Order Date:  #{@order.created_at}"
       end
     end
 
@@ -69,12 +69,12 @@ class ContractPDF < Prawn::Document
         arr = [["#", "Style Name", "Size", "Color", "Unit Price", "Quantity", "Total Price"]]
 
         # テーブルのデータ部
-          @contract.sold_products.map.with_index do |item, i|
+          @order.sold_products.map.with_index do |item, i|
             arr << [i+1, item.product.style_number, item.color.name, item.size.name, item.price, item.quantity, item.total_price]
           end
 
     # テーブルの合計部
-        arr << ["", "", "", "Total", @contract.total_price]
+        arr << ["", "", "", "Total", @order.total_price]
         return arr
       end
 

@@ -3,6 +3,8 @@ class TopController < ApplicationController
   before_action :move_to_content_page
 
   def index
+    @brands = Brand.all
+    @retailers = Retailer.all
   end
 
   def move_to_content_page

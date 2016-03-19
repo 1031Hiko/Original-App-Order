@@ -1,0 +1,23 @@
+
+<div class="container">
+  <div class="row">
+    <br>
+    <fieldset>
+      <div style="display:inline-flex">
+        <tr>
+          <%= f.hidden_field :id %>
+          <td><%= f.text_field :style_number, placeholder: "style number" %></td>
+          <td><%= f.text_field :price, placeholder: "price" %></td>
+          <td><%= f.collection_select(:size_id, @sizes, :id, :name, {}, class: 'form-control') %></td>
+          <td><%= f.collection_select(:color_id, @colors, :id, :name, {}, class: 'form-control') %></td>
+          <td><%= f.text_field :fabric, placeholder: "fabric" %></td>
+          <td><%= f.file_field :image %></td>
+          <td><%= f.hidden_field :_destroy %></td>
+          <td><%= link_to "remove", '#', class: "remove_fields" %></td>
+          <%= f.hidden_field :brand_id, :value => @brand.id %>
+        </tr>
+      </div>
+    </fieldset>
+  </div>
+</div>
+   
