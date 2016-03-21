@@ -1,13 +1,9 @@
 class Contract < ActiveRecord::Base
-  attr_accessor :size_id
-  attr_accessor :color_id
-
-
 
   belongs_to :brand
   belongs_to :retailer
   belongs_to :product
-  
+
   has_many :sold_products
   accepts_nested_attributes_for :sold_products, allow_destroy: true, reject_if: :reject_posts
 
