@@ -60,4 +60,5 @@ end
   gem 'prawn'
   gem 'prawn-table'
   gem 'jquery-easing-rails'
+  gem 'react-rails'
 

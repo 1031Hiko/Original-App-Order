@@ -50,5 +50,5 @@ Rails.application.configure do
     :password => "1031toshi", #ご自身のgmailアドレスのパスワード
     :authentication => 'login',
   }
-  config.serve_static_assets = false
+  config.serve_static_files = false
 end
